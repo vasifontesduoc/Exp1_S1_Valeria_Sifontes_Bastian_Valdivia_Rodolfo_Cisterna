@@ -88,5 +88,4 @@ public class Cliente {
     public void setCuentaCorriente(String cuentaCorriente) {
         this.cuentaCorriente = cuentaCorriente;
     }
-   
 }
