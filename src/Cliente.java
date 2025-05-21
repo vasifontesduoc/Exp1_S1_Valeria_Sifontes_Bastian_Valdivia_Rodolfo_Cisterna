@@ -9,19 +9,30 @@
  */
 public class Cliente {
 
-    private String nombre, apellido, rut, telefono, email, tipoCliente;
+    private String rut, nombre, apellidoPaterno, apellidoMaterno, domicilio, comuna, telefono, cuentaCorriente;
 
     // constructor
-    public Cliente(String nombre, String apellido, String rut, String telefono, String email, String tipoCliente) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Cliente(String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String domicilio, String comuna, String telefono, String cuentaCorriente) {
         this.rut = rut;
+        this.nombre = nombre;
+        this.apellidoMaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.domicilio = domicilio;
+        this.comuna = comuna;    
         this.telefono = telefono;
-        this.email = email;
-        this.tipoCliente = tipoCliente;
+        this.cuentaCorriente = cuentaCorriente;
     }
 
     // getters y setters
+
+      public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -30,20 +41,36 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
     }
 
-    public String getRut() {
-        return rut;
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
     }
 
-    public void setRut(String rut) {
-        this.rut = rut;
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public String getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(String comuna) {
+        this.comuna = comuna;
     }
 
     public String getTelefono() {
@@ -54,31 +81,12 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCuentaCorriente() {
+        return cuentaCorriente;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCuentaCorriente(String cuentaCorriente) {
+        this.cuentaCorriente = cuentaCorriente;
     }
-
-    public String getTipoCliente() {
-        return tipoCliente;
-    }
-
-    public void setTipoCliente(String tipoCliente) {
-        this.tipoCliente = tipoCliente;
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{"
-                + "nombre='" + nombre + '\''
-                + ", apellido='" + apellido + '\''
-                + ", rut='" + rut + '\''
-                + ", telefono='" + telefono + '\''
-                + ", email='" + email + '\''
-                + ", tipoCliente='" + tipoCliente + '\''
-                + '}';
-    }
+    
 }
