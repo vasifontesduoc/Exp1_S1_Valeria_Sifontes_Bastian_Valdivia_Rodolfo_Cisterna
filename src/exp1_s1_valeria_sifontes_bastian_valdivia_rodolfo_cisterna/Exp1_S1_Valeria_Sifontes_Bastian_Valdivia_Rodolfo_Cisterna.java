@@ -15,7 +15,8 @@ public class Exp1_S1_Valeria_Sifontes_Bastian_Valdivia_Rodolfo_Cisterna {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        MenuBanco menu = new MenuBanco();
+        menu.mostrar();
     }
-    
+
 }
