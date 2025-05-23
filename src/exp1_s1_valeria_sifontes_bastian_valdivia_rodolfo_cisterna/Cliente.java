@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package exp1_s1_valeria_sifontes_bastian_valdivia_rodolfo_cisterna;
 
 /**
  *
@@ -9,23 +10,38 @@
  */
 public class Cliente {
 
-    private String rut, nombre, apellidoPaterno, apellidoMaterno, domicilio, comuna, telefono, cuentaCorriente;
+    private String rut;
+    private String nombre;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private String domicilio;
+    private String comuna;
+    private String telefono;
+    private String correo;
+    private CuentaCorriente cuenta;
 
     // constructor
-    public Cliente(String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String domicilio, String comuna, String telefono, String cuentaCorriente) {
+    public Cliente(String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String domicilio, String comuna, String telefono, String correo) {
         this.rut = rut;
         this.nombre = nombre;
-        this.apellidoMaterno = apellidoPaterno;
+        this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.domicilio = domicilio;
-        this.comuna = comuna;    
+        this.comuna = comuna;
         this.telefono = telefono;
-        this.cuentaCorriente = cuentaCorriente;
+        this.correo = correo;
     }
 
     // getters y setters
+    public void setCuenta(CuentaCorriente cuenta) {
+        this.cuenta = cuenta;
+    }
 
-      public String getRut() {
+    public CuentaCorriente getCuenta() {
+        return cuenta;
+    }
+
+    public String getRut() {
         return rut;
     }
 
@@ -81,11 +97,13 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getCuentaCorriente() {
-        return cuentaCorriente;
-    }
-
-    public void setCuentaCorriente(String cuentaCorriente) {
-        this.cuentaCorriente = cuentaCorriente;
+    public String mostrarDatos() {
+        return "Rut: " + rut + "\n"
+                + "Nombre: " + nombre + " " + apellidoPaterno + " " + apellidoMaterno + "\n"
+                + "Domicilio: " + domicilio + "\n"
+                + "Comuna: " + comuna + "\n"
+                + "Teléfono: " + telefono + "\n"
+                + "Correo: " + correo + "\n"
+                + "Cuenta Corriente N°: " + (cuenta != null ? cuenta.getNumeroCuenta() : "Sin asignar");
     }
 }
