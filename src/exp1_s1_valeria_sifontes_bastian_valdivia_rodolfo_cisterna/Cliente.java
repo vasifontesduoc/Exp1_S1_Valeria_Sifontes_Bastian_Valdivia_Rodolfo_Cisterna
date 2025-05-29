@@ -8,7 +8,7 @@ package exp1_s1_valeria_sifontes_bastian_valdivia_rodolfo_cisterna;
  *
  * @author VALERIA
  */
-public class Cliente {
+public class Cliente implements Mostrable {
 
     private String rut;
     private String nombre;
@@ -18,7 +18,7 @@ public class Cliente {
     private String comuna;
     private String telefono;
     private String correo;
-    private CuentaCorriente cuenta;
+    private CuentaBancaria cuenta;
 
     // constructor
     public Cliente(String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String domicilio, String comuna, String telefono, String correo) {
@@ -33,11 +33,11 @@ public class Cliente {
     }
 
     // getters y setters
-    public void setCuenta(CuentaCorriente cuenta) {
+    public void setCuenta(CuentaBancaria cuenta) {
         this.cuenta = cuenta;
     }
 
-    public CuentaCorriente getCuenta() {
+    public CuentaBancaria getCuenta() {
         return cuenta;
     }
 
@@ -97,13 +97,17 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String mostrarDatos() {
-        return "Rut: " + rut + "\n"
-                + "Nombre: " + nombre + " " + apellidoPaterno + " " + apellidoMaterno + "\n"
-                + "Domicilio: " + domicilio + "\n"
-                + "Comuna: " + comuna + "\n"
-                + "Teléfono: " + telefono + "\n"
-                + "Correo: " + correo + "\n"
-                + "Cuenta Corriente N°: " + (cuenta != null ? cuenta.getNumeroCuenta() : "Sin asignar");
+    @Override
+    public void mostrarDatosCliente() {
+        System.out.println("\n===== DATOS DEL CLIENTE =====");
+        System.out.println("RUT         : " + rut);
+        System.out.println("Nombre      : " + nombre + " " + apellidoPaterno + " " + apellidoMaterno);
+        System.out.println("Domicilio   : " + domicilio);
+        System.out.println("Comuna      : " + comuna);
+        System.out.println("Teléfono    : " + telefono);
+        System.out.println("Correo      : " + correo);
+        System.out.println("N° Cuenta   : " + (cuenta != null ? cuenta.getNumeroCuenta() : "Sin asignar"));
+        System.out.println("Saldo       : $" + (cuenta != null ? cuenta.getSaldo() : 0));
+        System.out.println("Tipo Cuenta : " + (cuenta != null ? cuenta.getClass().getSimpleName() : "N/A"));
     }
 }
