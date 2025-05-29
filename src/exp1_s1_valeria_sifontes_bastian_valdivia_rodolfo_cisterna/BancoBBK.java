@@ -22,7 +22,7 @@ public class BancoBBK {
         System.out.print("Ingrese RUT (sin puntos, con guión: ");
         String rut = scanner.nextLine().trim();
 
-        while (!rut.matches("^\\d{7,8}-[\\dkK]$")) {
+        while (!rut.matches("^\\d{11,12}-[\\dkK]$")) {
             System.out.print("⚠️ RUT inválido. Ingrese nuevamente: ");
             rut = scanner.nextLine().trim();
         }
@@ -51,7 +51,7 @@ public class BancoBBK {
         int numeroCuenta = (int) (Math.random() * 900_000_000) + 100_000_000;
 
         Cliente cliente = new Cliente(rut, nombre, apellidoPaterno, apellidoMaterno, domicilio, comuna, telefono, correo);
-        CuentaCorriente cuenta = new CuentaCorriente(numeroCuenta, cliente);
+        CuentaBancaria cuenta = new CuentaBancaria(numeroCuenta, cliente) {};
         cliente.setCuenta(cuenta);
 
         clientes.add(cliente);
@@ -73,7 +73,7 @@ public class BancoBBK {
         for (Cliente c : clientes) {
             if (c.getRut().equalsIgnoreCase(rutBuscado)) {
                 System.out.println("\n=== DATOS DEL CLIENTE ===");
-                System.out.println(c.mostrarDatos());
+                System.out.println(c.mostrarDatosClientes());
                 System.out.println("Saldo actual: $" + c.getCuenta().getSaldo());
                 encontrado = true;
                 break;
