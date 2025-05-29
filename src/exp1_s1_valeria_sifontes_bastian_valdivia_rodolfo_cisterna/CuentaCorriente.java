@@ -8,43 +8,27 @@ package exp1_s1_valeria_sifontes_bastian_valdivia_rodolfo_cisterna;
  *
  * @author VALERIA
  */
-public class CuentaCorriente {
+public class CuentaCorriente extends CuentaBancaria {
 
-    private int numeroCuenta;
-    private int saldo;
-    private Cliente titular;
-
-    public CuentaCorriente(int numeroCuenta, Cliente titular) {
-        this.numeroCuenta = numeroCuenta;
-        this.titular = titular;
-        this.saldo = 0;
+    public CuentaCorriente(int numeroCuenta) {
+        super(numeroCuenta);
     }
 
-    public int getNumeroCuenta() {
-        return numeroCuenta;
-    }
-
-    public int getSaldo() {
-        return saldo;
-    }
-
-    public Cliente getTitular() {
-        return titular;
-    }
-
+    @Override
     public void depositar(int monto) {
         if (monto > 0) {
             saldo += monto;
-            System.out.println("Depósito exitoso: $" + monto);
+            System.out.println("Depósito en cuenta corriente: $" + monto);
         } else {
-            System.out.println("El monto debe ser mayor que cero.");
+            System.out.println("Monto inválido.");
         }
     }
 
+    @Override
     public void girar(int monto) {
         if (monto > 0 && monto <= saldo) {
             saldo -= monto;
-            System.out.println("Giro exitoso: $" + monto);
+            System.out.println("Giro exitoso de $" + monto);
         } else {
             System.out.println("Saldo insuficiente o monto inválido.");
         }
