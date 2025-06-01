@@ -21,7 +21,7 @@ public class Cliente implements Mostrable {
     private CuentaBancaria cuenta;
 
     // constructor
-    public Cliente(String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String domicilio, String comuna, String telefono, String correo) {
+    public Cliente(String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String domicilio, String comuna, String telefono, String correo, CuentaBancaria cuenta) {
         this.rut = rut;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -30,6 +30,7 @@ public class Cliente implements Mostrable {
         this.comuna = comuna;
         this.telefono = telefono;
         this.correo = correo;
+        this.cuenta = cuenta;
     }
 
     // getters y setters
@@ -46,7 +47,27 @@ public class Cliente implements Mostrable {
     }
 
     public void setRut(String rut) {
-        this.rut = rut;
+        if (rut != null) {
+            // Eliminar puntos y guiones, mantener números y letra K/k
+            String rutLimpio = rut.replaceAll("[^\\dkK]", "");
+
+            // Validar que termine en número o K
+            if (!rutLimpio.matches("\\d{7,10}[kK\\d]")) {
+                System.out.println("⚠️ RUT inválido. Debe tener entre 8 y 11 dígitos más verificador (número o K).");
+                this.rut = "000000000000";
+                return;
+            }
+
+            // Rellenar con ceros hasta completar 12 caracteres
+            while (rutLimpio.length() < 12) {
+                rutLimpio = "0" + rutLimpio;
+            }
+
+            this.rut = rutLimpio.toUpperCase();
+        } else {
+            System.out.println("⚠️ RUT nulo.");
+            this.rut = "000000000000";
+        }
     }
 
     public String getNombre() {
@@ -95,6 +116,10 @@ public class Cliente implements Mostrable {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
     }
 
     @Override
